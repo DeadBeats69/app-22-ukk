@@ -1,0 +1,47 @@
+.navbar-bg{
+    /* background: linear-gradient(90deg, red, yellow) !important; */
+    background-color: #11235A;
+}
+
+
+ .background {
+
+            /* background: linear-gradient(90deg, red, yellow) !important;*/
+            
+            height: 700px;
+            background-repeat: no-repeat;
+        }
+
+.about{
+    background: linear-gradient(145deg, #13274F, #232852) !important;
+    color: white;
+    
+}
+
+.footer{
+    background: linear-gradient(145deg, #2A3C69, #1D326A) !important;
+    color: white;
+}
+/* .text-mid{
+    text-align: left;
+    margin-left: 50px;
+    padding-top: 20%;
+} */
+
+.about-us{
+    padding-top: 20px;
+}
+
+.bibli{
+    margin-top: -10%;
+}
+
+/* .card-book{
+    width: 100px;
+    height: 100px;
+}
+
+.card-img-top{
+    width: 100px;
+    height: 100px;
+} */

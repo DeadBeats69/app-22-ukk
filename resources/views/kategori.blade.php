@@ -38,7 +38,8 @@
                                                     Action
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i>
+                                                    <li><a class="dropdown-item" href="/edit-kategori"><i
+                                                                class="bi bi-pencil"></i>
                                                             Edit</a>
                                                     </li>
                                                     <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>
@@ -51,7 +52,7 @@
 
                                 </tbody>
                             </table>
-                        </div>s
+                        </div>
                     </div>
                 </div>
 

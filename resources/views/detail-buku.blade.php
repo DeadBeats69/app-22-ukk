@@ -61,8 +61,16 @@
                                 <textarea class="form-control" name="deskripsi" id="deskripsi" style="height:120px" readonly>Buku yang bercerita tentang kapal laut</textarea>
                             </div>
                         </div>
+
                     </form>
+
                 </div>
+            </div>
+            <div class="d-flex d-flex justify-content-center mx-3">
+
+                <a href="/edit-buku" class="mx-2">
+                    <button type="button" class="btn btn-warning text-white w-100 my-2  ">Edit</button>
+                </a>
             </div>
         </section>
 
@@ -100,7 +108,7 @@
                                             Action
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i>
+                                            <li><a class="dropdown-item" href="/edit-ulas"><i class="bi bi-pencil"></i>
                                                     Edit</a>
                                             </li>
                                             <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>

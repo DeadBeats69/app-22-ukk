@@ -4,6 +4,12 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h1>Selamat Datang,Admin!</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Pustaka Buku</h3>
                 </div>
             </div>
@@ -48,7 +54,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="/detail-buku"><i class="bi bi-eye"></i>
                                                         Detail</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i>
+                                                <li><a class="dropdown-item" href="/edit-buku"><i class="bi bi-pencil"></i>
                                                         Edit</a>
                                                 </li>
                                                 <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>

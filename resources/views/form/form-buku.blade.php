@@ -48,14 +48,14 @@
                                 <label for="image" class="form-label">Gambar/Cover</label>
                                 <input type="file" class="form-control" name="image" id="image">
                             </div>
-                            <a href="/data-buku">
+                            <a href="/dashboard">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>
                             </a>
                             <a href="">
                                 <button type="reset" class="btn btn-warning text-white my-2 ">Reset </button>
                             </a>
                             <a href="">
-                                <button type="submit" class="btn btn-primary my-2 ">Kirim </button>
+                                <button type="submit" class="btn btn-primary my-2 ">Simpan </button>
                             </a>
                         </form>
                     </div>

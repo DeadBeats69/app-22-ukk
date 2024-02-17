@@ -30,7 +30,7 @@
                             <div class="d-flex d-flex justify-content-center">
                                 
                                 <button type="submit" class="btn text-light w-100 my-2 "
-                                    style="background-color:#041185 ">Submit</button>
+                                    style="background-color:#041185 ">Masuk</button>
                             </div>
                             <p class="my-1">Belum punya akun? <a href="/register">Daftar di sini</a> </p>
                         </form>

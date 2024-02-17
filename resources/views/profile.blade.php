@@ -1,20 +1,34 @@
-@extends('layouts.main')
-@section('section')
+@extends('layouts.pustaka')
 
-    <body style="font-family: nunito">
+@section('content')
+    <div class="page-heading">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>Account Profile</h3>
+                </div>
 
-        <div class="container-fluid background text-light min-vh-100 d-flex align-items-center"
-            style="background-size: cover;background-repeat:no-repeat; background-image: url({{ asset('img/lib1.png') }})">
-            <div class="container d-flex  justify-content-center">
+            </div>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+                                <div class="avatar avatar-2xl">
+                                    <img src="{{ asset('img/lib1.png') }}" style="width:200px; height:200px" alt="Avatar">
+                                </div>
 
-                <div class="card card-login text-light" style="width: 100%; height: 100%; background-color:#28355E">
-                    <a href="/" class="text-light my-2 d-flex justify-content-start">
-                        <h3 class="bi bi-arrow-left-circle-fill ms-3 mt-3"></h3>
-                    </a>
-                    <h3 class="card-title fw-bold my-3 text-center">Daftar</h3>
-                    <div class="card-body">
-                        <div class="container">
-
+                                <h3 class="mt-3">Budiono Siregar</h3>
+                                <p class="text-small">Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
                             <form>
                                 <div class="row">
                                     <div class="col">
@@ -52,45 +66,51 @@
                                             <input type="number" class="form-control" id="telepon" placeholder="">
                                         </div>
                                         <div class="mb-3">
+                                            <label for="alamat" class="form-label">Alamat</label>
+                                            <input type="textarea" class="form-control" id="alamat" placeholder="">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" class="form-control" id="password"
                                                 placeholder="********">
                                         </div>
-
                                         <div class="mb-3">
-                                            <label for="image" class="form-label">Foto Profile</label>
-                                            <input type="file" class="form-control" name="image" id="image">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="alamat" class="form-label">Alamat</label>
-                                            <textarea name="alamat" id="alamat" class="d-block w-100"></textarea>
+                                            <label for="jk" class="form-label">Role</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Pilih Role</option>
+                                                <option value="1">Admin</option>
+                                                <option value="2">Pegawai</option>
+                                                <option value="3">Peminjam</option>
+                                            </select>
                                         </div>
 
 
                                     </div>
                                     <div>
-                                        <div class="d-flex d-flex justify-content-center">
+                                        <div class="d-flex d-flex justify-content-start">
 
-                                            <a href="">
-                                                <button type="submit" class="btn text-light my-2 w-100 "
-                                                    style="background-color:#041185 ">Daftar</button>
+                                            <a href="/data-pengguna" class="mx-2">
+                                                <button type="button"
+                                                    class="btn btn-danger text-white w-100 my-2  ">Batal</button>
+                                            </a>
+                                            <a href="" class="mx-2">
+                                                <button type="reset"
+                                                    class="btn btn-warning text-white w-100 my-2  ">Reset</button>
+                                            </a>
+                                            <a href="" class="mx-2">
+                                                <button type="submit"
+                                                    class="btn btn-success text-white w-100 my-2  ">Tambah</button>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
 
                             </form>
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-        </div>
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
-    </body>
+        </section>
+    </div>
 @endsection

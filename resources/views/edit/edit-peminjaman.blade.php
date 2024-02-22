@@ -4,40 +4,60 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Tambah Buku</h3>
+                    <h3>Edit Peminjaman</h3>
                 </div>
             </div>
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('peminjaman.update', $peminjaman->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="mb-3">
                                 <label for="judul-buku" class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="">
+                                <select class="form-select" name="id_buku" aria-label="Default select example">
+                                    @foreach ($bukuList as $buku)
+                                        <option
+                                            value="{{ $buku->id }}"{{ $buku->id == $peminjaman->buku->id ? 'selected' : '' }}>
+                                            {{ $buku->judul }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="tgl-pinjam" class="form-label">Tgl Pinjam</label>
-                                <input type="date" class="form-control" id="tgl-pinjam" placeholder="">
+                                <input type="date" class="form-control" id="tgl_pinjam" name="tgl_pinjam"
+                                    value="{{ $peminjaman->tgl_pinjam }}" placeholder="">
                             </div>
 
                             <div class="mb-3">
                                 <label for="tgl-kembali" class="form-label">Tgl kembali</label>
-                                <input type="date" class="form-control" id="tgl-kembali" placeholder="">
+                                <input type="date" class="form-control" id="tgl_kembali" name="tgl_kembali"
+                                    value="{{ $peminjaman->tgl_kembali }}" placeholder="">
                             </div>
 
                             <div class="mb-3">
                                 <label for="kategori" class="form-label">Status</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="">Dipinjam</option>
-                                    <option value="">dikembalikan</option>
+                                <select class="form-select" name="status_pinjam" aria-label="Default select example">
+                                    <option value="dipinjam"
+                                        {{ $peminjaman->status_pinjam == 'dipinjam' ? 'selected' : '' }}>Dipinjam</option>
+                                    <option value="dikembalikan"
+                                        {{ $peminjaman->status_pinjam == 'dikembalikan' ? 'selected' : '' }}>Dikembalikan
+                                    </option>
+
                                 </select>
                             </div>
 
 
                             <div class="mb-3">
                                 <label for="peminjam" class="form-label">Peminjam</label>
-                                <input type="text" class="form-control" id="peminjam" placeholder="">
+                                <select class="form-select" name="id_user" aria-label="Default select example">
+                                    @foreach ($user as $user)
+                                        <option
+                                            value="{{ $user->id }}"{{ $user->id == $peminjaman->user->id ? 'selected' : '' }}>
+                                            {{ $user->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <a href="/peminjaman">

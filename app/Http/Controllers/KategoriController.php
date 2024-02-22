@@ -17,7 +17,8 @@ class KategoriController extends Controller
 
         return view('kategori', compact('kategori'), [
             "title"=> 'Kategori',
-            "active"=> 'kategori'
+            "active"=> 'kategori',
+            'kategori' => $kategori
         ]);
     }
 

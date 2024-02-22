@@ -27,28 +27,28 @@ class Buku extends Model
     //  *
     //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     //  */
-    // public function kategori(): BelongsTo
-    // {
-    //     return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
-    // }
+    public function kategori(): BelongsTo
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
+    }
 
     // /**
     //  * Get all of the comments for the Buku
     //  *
     //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
     //  */
-    // public function peminjaman(): HasMany
-    // {
-    //     return $this->hasMany(Peminjaman::class, 'id_buku', 'id');
-    // }
+    public function peminjaman(): HasMany
+    {
+        return $this->hasMany(Peminjaman::class, 'id_buku', 'id');
+    }
 
     // /**
     //  * Get all of the comments for the Buku
     //  *
     //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
     //  */
-    // public function ulas(): HasMany
-    // {
-    //     return $this->hasMany(Ulasan::class, 'id_buku', 'id');
-    // }
+    public function ulas(): HasMany
+    {
+        return $this->hasMany(Ulasan::class, 'id_buku', 'id');
+    }
 }

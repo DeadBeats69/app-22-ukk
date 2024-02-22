@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->date('tgl_pinjam');
+            $table->date('tgl_kembali');
+            $table->enum("status_pinjam",['dipinjam','dikembalikan']);
+            $table->unsignedBigInteger('id_buku');
+            $table->foreign('id_buku')->references('id')->on('buku')->onDelete('cascade');
             $table->timestamps();
         });
     }

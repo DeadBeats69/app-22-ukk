@@ -10,34 +10,44 @@
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('peminjaman.store') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="judul-buku" class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="">
+                                <select class="form-select" name="id_buku" aria-label="Default select example">
+                                    @foreach ($buku as $buku)
+                                        <option value="{{ $buku->id }}">{{ $buku->judul }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="mb-3">
-                                <label for="tgl-pinjam" class="form-label">Tgl Pinjam</label>
-                                <input type="date" class="form-control" id="tgl-pinjam" placeholder="">
+                                <label for="tgl_pinjam" class="form-label">Tgl Pinjam</label>
+                                <input type="date" class="form-control" name="tgl_pinjam" id="tgl_pinjam" placeholder="">
                             </div>
 
                             <div class="mb-3">
-                                <label for="tgl-kembali" class="form-label">Tgl kembali</label>
-                                <input type="date" class="form-control" id="tgl-kembali" placeholder="">
+                                <label for="tgl_kembali" class="form-label">Tgl kembali</label>
+                                <input type="date" class="form-control" id="tgl_kembali" name="tgl_kembali"
+                                    placeholder="">
                             </div>
 
                             <div class="mb-3">
                                 <label for="kategori" class="form-label">Status</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="">Dipinjam</option>
-                                    <option value="">dikembalikan</option>
+                                <select class="form-select" name="status_pinjam" aria-label="Default select example">
+                                    <option value="dipinjam">Dipinjam</option>
+                                    <option value="dikembalikan">Dikembalikan</option>
                                 </select>
                             </div>
 
 
                             <div class="mb-3">
                                 <label for="peminjam" class="form-label">Peminjam</label>
-                                <input type="text" class="form-control" id="peminjam" placeholder="">
+                                <select class="form-select" name="id_user" aria-label="Default select example">
+                                    @foreach ($user as $user)
+                                        <option value="{{ $user->id }}">{{ $user->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <a href="/peminjaman">

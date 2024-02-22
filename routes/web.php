@@ -43,7 +43,6 @@ Route::post('/register', [RegisterController::class, 'registerAction']);
 //Buat nampilin dashboard
 
 Route::resource('/dashboard', App\Http\Controllers\BukuController::class);
-Route::get('/dashboard-admin',[DashboardController::class,'dashboardadmin']);
 Route::get('/dashboard-pegawai',[DashboardController::class,'dashboardpegawai']);
 Route::get('/dashboard-peminjam',[DashboardController::class,'dashboardpeminjam']); 
 
@@ -64,7 +63,7 @@ Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
 // Route::delete('/koleksi-delete',[KoleksiController::class,'destroy'])->name('koleksi.destroy');
 
 // // peminjaman
-// Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);
+Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);
 
 // // ulasan
-// Route::resource('/ulas', App\Http\Controllers\UlasController::class);
+Route::resource('/ulas', App\Http\Controllers\UlasController::class);

@@ -11,10 +11,11 @@ class BukuController extends Controller
 {
     public function index() {
         $buku = Buku::latest()->paginate(5);
-        
+        $kategori = Kategori::get();
         return view('dashboard.dashboard', compact('buku'), [
             'title' => 'Buku',
             'active' => 'buku',
+            'kategori' => $kategori
         ]);
     }
 

@@ -3,24 +3,27 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $table = 'users';
     protected $fillable = [
-        'nama',
         'username',
+        'nama',
+        'password',
         'jk',
         'tgl_lahir',
         'email',
@@ -28,7 +31,6 @@ class User extends Authenticatable
         'alamat',
         'role',
         'gambar',
-        'password',
     ];
 
     /**
@@ -50,4 +52,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function peminjaman(): HasMany
+    {
+        return $this->hasMany(Peminjaman::class, 'id_user', 'id');
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ulas(): HasMany
+    {
+        return $this->hasMany(Ulasan::class, 'id_user', 'id');
+    }
 }

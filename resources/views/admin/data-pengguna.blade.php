@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
-                            <a href="/form-pengguna">
+                            <a href="{{ route('data-pengguna.create') }}">
                                 <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle me-1"></i>
                                     Tambah
                                     Pengguna</button>
@@ -30,32 +30,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Budiono Siregar</td>
-                                    <td>budiono@gmail.com</td>
-                                    <td>Admin</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="/profile"><i class="bi bi-eye"></i>
-                                                        Detail</a></li>
-                                                <li><a class="dropdown-item" href="/edit-profile"><i
-                                                            class="bi bi-pencil"></i>
-                                                        Edit</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>
-                                                        Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
+                                @foreach ($user as $user)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->nama }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->role }}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('data-pengguna.show', $user->id) }}"><i
+                                                                class="bi bi-eye"></i>
+                                                            Detail</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('data-pengguna.edit', $user->id) }}"><i
+                                                                class="bi bi-pencil"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                    <form action="{{ route('data-pengguna.destroy', $user->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <li><button type="submit" class="dropdown-item" href="#"><i
+                                                                    class="bi bi-trash"></i>
+                                                                Delete</button></li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

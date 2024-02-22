@@ -20,7 +20,7 @@
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-select" aria-label="Default select example" name="id_kategori">
                                     @foreach ($kategori as $kategori)
-                                    <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                                        <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <input type="textarea" class="form-control" id="deskripsi" placeholder="" name="deskripsi">
+                                <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="stok" class="form-label">Stok</label>

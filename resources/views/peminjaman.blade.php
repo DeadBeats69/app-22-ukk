@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
-                            <a href="/form-peminjaman" class="mx-2">
+                            <a href="{{ route('peminjaman.create') }}" class="mx-2">
                                 <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle mx-2"></i>
                                     Tambah
                                     Data</button>
@@ -37,33 +37,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="text-center">Kapal Laut</td>
-                                    <td class="text-center">20-2-2024</td>
-                                    <td class="text-center">27-2-2024</td>
-                                    <td class="text-center">Dipinjam</td>
-                                    <td class="text-center">Ahmad</td>
-                                    <td>
-                                        <div class="dropdown text-center">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <ul class="dropdown-menu">
+                                @foreach ($peminjaman as $peminjaman)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="text-center">{{ $peminjaman->buku->judul }}</td>
+                                        <td class="text-center">{{ $peminjaman->tgl_pinjam }}</td>
+                                        <td class="text-center">{{ $peminjaman->tgl_kembali }}</td>
+                                        <td class="text-center">{{ Str::title($peminjaman->status_pinjam) }}</td>
+                                        <td class="text-center">Ahmad</td>
+                                        <td>
+                                            <div class="dropdown text-center">
+                                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu">
 
-                                                <li><a class="dropdown-item" href="/edit-peminjaman"><i
-                                                            class="bi bi-pencil"></i>
-                                                        Edit</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>
-                                                        Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
+                                                                class="bi bi-pencil"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                    <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <li><button type="submit" class="dropdown-item" href="#"><i
+                                                                    class="bi bi-trash"></i>
+                                                                Delete</button></li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

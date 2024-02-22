@@ -13,13 +13,6 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function dashboardadmin(){
-        $buku = Buku::paginate(5);
-        return view('dashboard.dashboard', [
-            'title' => 'Buku',
-            'active' => 'buku',
-        ]);
-    }
     public function dashboardpegawai(){
         $buku = Buku::paginate(5);
         return view('dashboard.dashboard-pegawai', [

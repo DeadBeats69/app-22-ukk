@@ -26,6 +26,9 @@ class RegisterController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:5120'
         ]);
 
+        $image = $request->file('gambar');
+        $image->storeAs('public/posts', $image->hashName());
+        $validateData['gambar'] = $image->hashName();
         if($validateData){
             $validateData['role'] = 'peminjam';
 

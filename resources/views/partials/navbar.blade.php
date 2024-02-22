@@ -17,12 +17,12 @@
                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">Budi</h6>
-                                <p class="mb-0 text-sm text-gray-600">Administrator</p>
+                                <h6 class="mb-0 text-gray-600">{{ Auth::user()->nama }}</h6>
+                                <p class="mb-0 text-sm text-gray-600">{{ Str::title(Auth::user()->role) }}</p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
-                                    <img src="./assets/compiled/jpg/1.jpg">
+                                    <img src="{{ asset('storage/posts/' . Auth::user()->gambar) }}">
                                 </div>
                             </div>
                         </div>
@@ -30,14 +30,15 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                         style="min-width: 11rem;">
                         <li>
-                            <h6 class="dropdown-header">Hello, Budi!</h6>
+                            <h6 class="dropdown-header">Hello, {{ Auth::user()->nama }}!</h6>
                         </li>
-                        <li><a class="dropdown-item" href="/profile"><i class="icon-mid bi bi-person me-2"></i> My
+                        <li><a class="dropdown-item" href="{{ route('data-pengguna.show', Auth::user()->id) }}"><i
+                                    class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                        <li><a class="dropdown-item" href="/logout"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
                                 Logout</a></li>
                     </ul>
                 </div>

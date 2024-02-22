@@ -24,7 +24,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             
             if(auth()->user()->role == 'admin'){
-                return redirect()->intended('dashboard-admin');
+                return redirect()->intended('dashboard');
             } elseif (auth()->user()->role == 'pegawai'){
                 return redirect()->intended('dashboard-pegawai');
             } else{

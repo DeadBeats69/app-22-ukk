@@ -3,6 +3,7 @@
 
     <body style="font-family: nunito">
 
+
         <div class="container-fluid background text-light min-vh-100 d-flex align-items-center"
             style="background-size: cover;background-repeat:no-repeat; background-image: url({{ asset('img/lib1.png') }})">
             <div class="container d-flex  justify-content-center">
@@ -11,36 +12,47 @@
                     <a href="/" class="text-light my-2 d-flex justify-content-start">
                         <h3 class="bi bi-arrow-left-circle-fill ms-3 mt-3"></h3>
                     </a>
+
                     <h3 class="card-title fw-bold my-3 text-center">Daftar</h3>
+
+                    @if (Session::has('errors'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('errors') }}
+                        </div>
+                    @endif
+
                     <div class="card-body">
                         <div class="container">
-
-                            <form>
+                            <form action="/register" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="">
+                                            <input type="text" class="form-control" name="username" id="username"
+                                                placeholder="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="nama" class="form-label">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="nama" placeholder="">
+                                            <input type="text" class="form-control" name="nama" id="nama"
+                                                placeholder="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="jk" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-select" aria-label="Default select example">
+                                            <select class="form-select" name="jk" aria-label="Default select example">
                                                 <option selected>Pilih jenis kelamin</option>
-                                                <option value="1">Laki-laki</option>
-                                                <option value="2">Perempuan</option>
+                                                <option value="L">Laki-laki</option>
+                                                <option value="P">Perempuan</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="tgl-lahir" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" class="form-control" id="password" placeholder="">
+                                            <input type="date" class="form-control" name="tgl_lahir" id="password"
+                                                placeholder="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email"
+                                            <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="example@gmail.com">
                                         </div>
                                     </div>
@@ -49,17 +61,18 @@
 
                                         <div class="mb-3">
                                             <label for="telepon" class="form-label">Telepon</label>
-                                            <input type="number" class="form-control" id="telepon" placeholder="">
+                                            <input type="number" name="telepon" class="form-control" id="telepon"
+                                                placeholder="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password"
+                                            <input type="password" class="form-control" name="password" id="password"
                                                 placeholder="********">
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="image" class="form-label">Foto Profile</label>
-                                            <input type="file" class="form-control" name="image" id="image">
+                                            <input type="file" class="form-control" name="gambar" id="image">
                                         </div>
                                         <div class="mb-3">
                                             <label for="alamat" class="form-label">Alamat</label>
@@ -70,11 +83,8 @@
                                     </div>
                                     <div>
                                         <div class="d-flex d-flex justify-content-center">
-
-                                            <a href="">
-                                                <button type="submit" class="btn text-light my-2 w-100 "
-                                                    style="background-color:#041185 ">Daftar</button>
-                                            </a>
+                                            <button type="submit" class="btn text-light my-2 w-100 "
+                                                style="background-color:#041185 ">Daftar</button>
                                         </div>
                                     </div>
                                 </div>

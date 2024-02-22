@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
-                            <a href="/form-buku">
+                            <a href="{{ route('dashboard.create') }}">
                                 <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle me-1"></i>
                                     Tambah
                                     Buku</button>
@@ -31,40 +31,53 @@
                                     <th>#</th>
                                     <th>Cover</th>
                                     <th>Judul Buku</th>
-                                    <th>Pengarang</th>
+                                    <th>Kategori</th>
+                                    <th>Penulis</th>
                                     <th>Stok</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td style="width: 150px; height: 200px"><img src="{{ asset('img/lib1.png') }}"
-                                            alt="" class="w-100">
-                                    </td>
-                                    <td class="text-center">Kapal Laut</td>
-                                    <td class="text-center">Budiono Siregar</td>
-                                    <td class="text-center">10</td>
-                                    <td>
-                                        <div class="dropdown text-center">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="/detail-buku"><i class="bi bi-eye"></i>
-                                                        Detail</a></li>
-                                                <li><a class="dropdown-item" href="/edit-buku"><i class="bi bi-pencil"></i>
-                                                        Edit</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i>
-                                                        Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
+                                @foreach ($buku as $buku)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td style="width: 150px; height: 200px"><img
+                                                src="{{ asset('storage/posts/' . $buku->cover) }}" alt=""
+                                                class="w-100">
+                                        </td>
+                                        <td class="text-center">{{ $buku->judul }}</td>
+                                        <td class="text-center">{{ $buku->kategori->kategori }}</td>
+                                        <td class="text-center">{{ $buku->penulis }}</td>
+                                        <td class="text-center">{{ $buku->stok }}</td>
+                                        <td>
+                                            <div class="dropdown text-center">
+                                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('dashboard.show', $buku->id) }}"><i
+                                                                class="bi bi-eye"></i>
+                                                            Detail</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('dashboard.edit', $buku->id) }}"><i
+                                                                class="bi bi-pencil"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                    <form action="{{ route('dashboard.destroy', $buku->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <li><button type="submit" class="dropdown-item" href="#"><i
+                                                                    class="bi bi-trash"></i>
+                                                                Delete</button></li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -31,18 +31,18 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item  {{ $active == 'kategori' ? 'active' : '' }}">
+                    <a href="/kategori" class='sidebar-link'>
+                        <i class="bi bi-tags-fill"></i>
+                        <span>Kategori</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item {{ $active == 'koleksi' ? 'active' : '' }}">
 
                     <a href="/koleksi" class='sidebar-link'>
                         <i class="bi bi-bookmark-fill"></i>
                         <span>Koleksi</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  {{ $active == 'kategori' ? 'active' : '' }}">
-                    <a href="/kategori" class='sidebar-link'>
-                        <i class="bi bi-tags-fill"></i>
-                        <span>Kategori</span>
                     </a>
                 </li>
 

@@ -1,6 +1,17 @@
 <?php
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataPenggunaController;
+use App\Http\Controllers\DetailBukuController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KoleksiController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,150 +24,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// landing page
+Route::get('/', [WelcomeController::class,  'welcome']);
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+//Buat nampilin Login 
+Route::get('/login', [LoginController::class,  'login']);
+Route::post('/login', [LoginController::class, 'loginAction']);
+Route::post('/dashboard', [LoginController::class, 'loginAction']);
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+// logout
+Route::get('/logout',[LoginController::class,'logout']);
 
-// dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard', [
-        'title' => 'Buku',
-        'active' => 'buku'
-    ]);
-});
+//Buat nampilin Register
 
-Route::get('/dashboard-peminjam', function () {
-    return view('dashboard.dashboard-peminjam', [
-        'title' => 'Buku',
-        'active' => 'buku'
-    ]);
-});
+Route::get('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'registerAction']);
 
-// buku
-Route::get('/detail-buku', function () {
-    return view('detail-buku',[
-        'title' => 'Detail Buku',
-        'active' => 'buku'
-    ]);
-});
+//Buat nampilin dashboard
 
-Route::get('/form-buku', function () {
-    return view('form.form-buku',[
-        'title' => 'Form Buku',
-        'active' => 'buku'
-    ]);
-});
-
-// ulas
-Route::get('/form-ulas', function () {
-    return view('form.form-ulas',[
-        'title' => 'Form Ulasan',
-        'active' => 'buku'
-    ]);
-});
-
-Route::get('/edit-ulas', function () {
-    return view('edit.edit-ulas',[
-        'title' => 'Edit Ulasan',
-        'active' => 'buku'
-    ]);
-});
-
-Route::get('/edit-buku', function () {
-    return view('edit.edit-buku',[
-        'title' => 'Edit Buku',
-        'active' => 'buku'
-    ]);
-});
-
-// kategori
-Route::get('/kategori', function () {
-    return view('kategori',[
-        'title' => 'Kategori',
-        'active' => 'kategori'
-    ]);
-});
-
-Route::get('/form-kategori', function () {
-    return view('form.form-kategori',[
-        'title' => 'Form Kategori',
-        'active' => 'kategori'
-    ]);
-});
-
-Route::get('/edit-kategori', function () {
-    return view('edit.edit-kategori',[
-        'title' => 'Edit Kategori',
-        'active' => 'kategori'
-    ]);
-});
-
-// data pengguna
-Route::get('/data-pengguna', function () {
-    return view('admin.data-pengguna',[
-        'title' => 'Data Pengguna',
-        'active' => 'data-pengguna'
-    ]);
-});
-
-Route::get('/form-pengguna', function () {
-    return view('form.form-pengguna',[
-        'title' => 'Form Pengguna',
-        'active' => 'data-pengguna'
-    ]);
-});
-//  profile
-Route::get('/profile', function () {
-    return view('profile',[
-        'title' => 'Profile',
-        'active' => 'buku'
-    ]);
-});
-
-Route::get('/edit-profile', function () {
-    return view('edit.edit-profile',[
-        'title' => 'Edit Profile',
-        'active' => 'buku'
-    ]);
-});
-
-// peminjaman
-Route::get('/peminjaman', function () {
-    return view('peminjaman',[
-        'title' => 'Peminjaman',
-        'active' => 'peminjaman'
-    ]);
-});
-
-Route::get('/form-peminjaman', function () {
-    return view('form.form-peminjaman',[
-        'title' => 'Form Peminjaman',
-        'active' => 'peminjaman'
-    ]);
-});
-
-Route::get('/edit-peminjaman', function () {
-    return view('edit.edit-peminjaman',[
-        'title' => 'Edit Peminjaman',
-        'active' => 'peminjaman'
-    ]);
-});
-
-// koleksi
-Route::get('/koleksi', function () {
-    return view('koleksi', [
-        'title' => 'Koleksi',
-        'active' => 'koleksi'
-    ]);
-});
+Route::resource('/dashboard', App\Http\Controllers\BukuController::class);
+Route::get('/dashboard-admin',[DashboardController::class,'dashboardadmin']);
+Route::get('/dashboard-pegawai',[DashboardController::class,'dashboardpegawai']);
+Route::get('/dashboard-peminjam',[DashboardController::class,'dashboardpeminjam']); 
 
 
 
+//Buat pengguna
+
+Route::resource('/data-pengguna', App\Http\Controllers\UserController::class);
+
+// //buat nampilin kategori
+
+Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
+
+// //buat nampilin koleksi
+
+// Route::get('/koleksi',[KoleksiController::class,'index']);
+
+// Route::delete('/koleksi-delete',[KoleksiController::class,'destroy'])->name('koleksi.destroy');
+
+// // peminjaman
+// Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);
+
+// // ulasan
+// Route::resource('/ulas', App\Http\Controllers\UlasController::class);

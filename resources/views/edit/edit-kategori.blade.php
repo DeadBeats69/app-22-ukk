@@ -10,10 +10,13 @@
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
+                            @method('PUT')
+                            @csrf
                             <div class="mb-3">
                                 <label for="kategori" class="form-label">Nama Kategori</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="">
+                                <input type="text" value="{{ $kategori->kategori }}" class="form-control" id="judul-buku"
+                                    placeholder="" name="kategori">
                             </div>
                             <a href="/kategori">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>

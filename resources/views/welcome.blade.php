@@ -25,7 +25,7 @@
     {{-- section home --}}
     <section class="home" id="home">
         <div class="container-fluid background text-light min-vh-100 d-flex align-items-center"
-            style="background-repeat:no-repeat; background-image: url({{ asset('img/lib1.png') }})">
+            style="background-repeat:repeat; background-image: url({{ asset('img/lib1.png') }});">
             <div class="container justify-content-center">
                 <div class="text-mid">
                     <h1>Cari dan Temukan Buku Yang Kamu Mau</h1>

@@ -10,43 +10,45 @@
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('dashboard.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="mb-3">
                                 <label for="judul-buku" class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="">
+                                <input type="text" class="form-control" id="judul-buku" placeholder="" name="judul">
                             </div>
                             <div class="mb-3">
                                 <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="">comedy</option>
-                                    <option value="">action</option>
+                                <select class="form-select" aria-label="Default select example" name="id_kategori">
+                                    @foreach ($kategori as $kategori)
+                                    <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="penulis" class="form-label">Penulis</label>
-                                <input type="text" class="form-control" id="penulis" placeholder="">
+                                <input type="text" class="form-control" id="penulis" placeholder="" name="penulis">
                             </div>
 
                             <div class="mb-3">
                                 <label for="penerbit" class="form-label">Penerbit</label>
-                                <input type="text" class="form-control" id="penerbit" placeholder="">
+                                <input type="text" class="form-control" id="penerbit" placeholder="" name="penerbit">
                             </div>
                             <div class="mb-3">
                                 <label for="tahun-terbit" class="form-label">Tahun Terbit</label>
                                 <input type="number" min="1900" max="2099" step="1" value=""
-                                    class="form-control">
+                                    class="form-control" name="tahun_terbit">
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <input type="textarea" class="form-control" id="deskripsi" placeholder="">
+                                <input type="textarea" class="form-control" id="deskripsi" placeholder="" name="deskripsi">
                             </div>
                             <div class="mb-3">
                                 <label for="stok" class="form-label">Stok</label>
-                                <input type="number" class="form-control" id="stok" placeholder="">
+                                <input type="number" class="form-control" id="stok" placeholder="" name="stok">
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Gambar/Cover</label>
-                                <input type="file" class="form-control" name="image" id="image">
+                                <input type="file" class="form-control" name="cover" id="cover">
                             </div>
                             <a href="/dashboard">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>

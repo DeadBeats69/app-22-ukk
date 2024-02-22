@@ -10,10 +10,11 @@
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('kategori.store') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Kategori</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="">
+                                <input type="text" class="form-control" id="judul-buku" placeholder="" name="kategori">
                             </div>
                             <a href="/kategori">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>

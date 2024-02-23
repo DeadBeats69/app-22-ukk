@@ -6,7 +6,7 @@
             {{-- navbar --}}
             <nav class="navbar important navbar-expand-lg">
                 <div class="container text-light">
-                    <a class="navbar-brand text-light fw-bold mx-2" href="/dashboard">LeVivli</a>
+                    <a class="navbar-brand text-light fw-bold mx-2" href="/">LeVivli</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#home"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

@@ -21,7 +21,7 @@
                                         style="width:200px; height:200px" alt="Avatar">
                                 </div>
 
-                                <h3 class="mt-3">{{ $user->username }}</h3>
+                                <h3 class="mt-3">{{ Str::title($user->username) }}</h3>
                                 <p class="text-small">{{ Str::title($user->role) }}</p>
                             </div>
                         </div>
@@ -36,12 +36,12 @@
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="username" placeholder=""
-                                                value="{{ $user->username }}" readonly>
+                                                value="{{ Str::title($user->username) }}" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nama" class="form-label">Nama Lengkap</label>
                                             <input type="text" class="form-control" id="nama" placeholder=""
-                                                value="{{ $user->nama }}" readonly>
+                                                value="{{ Str::title($user->nama) }}" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="jk" class="form-label">Jenis Kelamin</label>
@@ -74,11 +74,11 @@
                                         <div class="mb-3">
                                             <label for="Role" class="form-label">Role</label>
                                             <input type="text" class="form-control" id="role" placeholder=""
-                                                value="{{ $user->role }}" readonly>
+                                                value="{{ Str::title($user->role) }}" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="alamat" class="form-label">Alamat</label>
-                                            <textarea name="alamat" id="alamat" class="d-block w-100 form-control" readonly>{{ $user->alamat }}</textarea>
+                                            <textarea name="alamat" id="alamat" class="d-block w-100 form-control" readonly>{{ Str::title($user->alamat) }}</textarea>
                                         </div>
 
 

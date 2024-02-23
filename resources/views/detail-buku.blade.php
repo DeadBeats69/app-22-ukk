@@ -31,23 +31,23 @@
                         <div class="mb-3">
                             <label for="judul-buku" class="form-label">Judul Buku</label>
                             <input type="text" class="form-control" id="judul-buku" name="judul" placeholder=""
-                                readonly value="{{ $buku->judul }}">
+                                readonly value="{{ Str::title($buku->judul) }}">
                         </div>
                         <div class="mb-3">
                             <label for="jk" class="form-label">Kategori</label>
                             <input type="text" class="form-control" id="kategori" name="kategori" placeholder=""
-                                readonly value="{{ $kategori->kategori }}">
+                                readonly value="{{ Str::title($kategori->kategori) }}">
                         </div>
                         <div class="mb-3">
                             <label for="penulis" class="form-label">Penulis</label>
-                            <input type="text" class="form-control" value="{{ $buku->penulis }}" name="penulis"
-                                id="penulis" placeholder="" value="Budiono Siregar" readonly>
+                            <input type="text" class="form-control" value="{{ Str::title($buku->penulis) }}"
+                                name="penulis" id="penulis" placeholder="" value="Budiono Siregar" readonly>
                         </div>
 
                         <div class="mb-3">
                             <label for="penerbit" class="form-label">Penerbit</label>
-                            <input type="text" class="form-control" value="{{ $buku->penerbit }}" name="penerbit"
-                                id="penerbit" placeholder="" value="Sinarmas" readonly>
+                            <input type="text" class="form-control" value="{{ Str::title($buku->penerbit) }}"
+                                name="penerbit" id="penerbit" placeholder="" value="Sinarmas" readonly>
                         </div>
                     </form>
                 </div>
@@ -99,6 +99,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Buku</th>
                                 <th>Ulasan</th>
                                 <th>Rating</th>
                                 <th>Pemberi Ulasan</th>
@@ -109,9 +110,10 @@
                             @foreach ($ulas as $ulas)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $ulas->buku->judul }}</td>
                                     <td>{{ $ulas->ulasan }}</td>
                                     <td>{{ $ulas->rating }}</td>
-                                    <td>{{ $ulas->user->nama }}</td>
+                                    <td>{{ Str::title($ulas->user->nama) }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle" type="button"
@@ -119,10 +121,6 @@
                                                 Action
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="/detail-ulas"><i
-                                                            class="bi bi-eye"></i>
-                                                        Detail</a>
-                                                </li>
                                                 <li><a class="dropdown-item"
                                                         href="{{ route('ulas.edit', $ulas->id) }}"><i
                                                             class="bi bi-pencil"></i>

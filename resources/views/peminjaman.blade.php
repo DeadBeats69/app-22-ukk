@@ -16,15 +16,15 @@
                                     Tambah
                                     Data</button>
                             </a>
-                            <a href="/export-peminjaman" class="mx-2">
+                            <a href="/peminjaman" class="mx-2">
                                 <button type="button" class="btn btn-success d-flex"><i
                                         class="bi bi-file-earmark-excel mx-2"></i>
-                                    Export Peminjaman</button>
+                                    Cetak Peminjaman</button>
                             </a>
                         </ul>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-bordered" id="table1">
+                        <table class="table table-striped table-bordered my-2" id="table1">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -40,11 +40,11 @@
                                 @foreach ($peminjaman as $peminjaman)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td class="text-center">{{ $peminjaman->buku->judul }}</td>
+                                        <td class="text-center">{{ Str::title($peminjaman->buku->judul) }}</td>
                                         <td class="text-center">{{ $peminjaman->tgl_pinjam }}</td>
                                         <td class="text-center">{{ $peminjaman->tgl_kembali }}</td>
                                         <td class="text-center">{{ Str::title($peminjaman->status_pinjam) }}</td>
-                                        <td class="text-center">Ahmad</td>
+                                        <td class="text-center">{{ Str::title($peminjaman->user->nama) }}</td>
                                         <td>
                                             <div class="dropdown text-center">
                                                 <button class="btn btn-primary dropdown-toggle" type="button"

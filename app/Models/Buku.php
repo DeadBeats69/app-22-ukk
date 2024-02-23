@@ -51,4 +51,14 @@ class Buku extends Model
     {
         return $this->hasMany(Ulasan::class, 'id_buku', 'id');
     }
+
+    /**
+     * Get all of the koleksi for the Buku
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function koleksi(): HasMany
+    {
+        return $this->hasMany(Koleksi::class, 'id_user', 'id');
+    }
 }

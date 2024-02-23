@@ -56,11 +56,8 @@ Route::resource('/data-pengguna', App\Http\Controllers\UserController::class);
 
 Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
 
-// //buat nampilin koleksi
-
-// Route::get('/koleksi',[KoleksiController::class,'index']);
-
-// Route::delete('/koleksi-delete',[KoleksiController::class,'destroy'])->name('koleksi.destroy');
+//buat nampilin koleksi
+Route::resource('/koleksi', App\Http\Controllers\KoleksiController::class);
 
 // // peminjaman
 Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);

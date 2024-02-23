@@ -21,7 +21,7 @@
                                         style="width:200px; height:200px" alt="Avatar">
                                 </div>
 
-                                <h3 class="mt-3">{{ $user->nama }}</h3>
+                                <h3 class="mt-3">{{ Str::title($user->username) }}</h3>
                                 <p class="text-small">{{ Str::title($user->role) }}</p>
                             </div>
                         </div>
@@ -39,12 +39,12 @@
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="username" placeholder=""
-                                                name="username" value="{{ $user->username }}">
+                                                name="username" value="{{ Str::title($user->username) }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="nama" class="form-label">Nama Lengkap</label>
                                             <input type="text" class="form-control" id="nama" placeholder=""
-                                                name="nama" value="{{ $user->nama }}">
+                                                name="nama" value="{{ Str::title($user->nama) }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="jk" class="form-label">Jenis Kelamin</label>
@@ -74,28 +74,23 @@
                                             <input type="number" class="form-control" id="telepon" placeholder=""
                                                 name="telepon" value="{{ $user->telepon }}">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="alamat" class="form-label">Alamat</label>
-                                            <input type="textarea" class="form-control" id="alamat" placeholder=""
-                                                name="alamat" value="{{ $user->alamat }}">
-                                        </div>
+
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="text" class="form-control" id="password" placeholder=""
                                                 name="password" value="{{ $user->password }}">
+                                            <input type="hidden" name="password" value="{{ $user->password }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="jk" class="form-label">Role</label>
-                                            <select class="form-select" aria-label="Default select example"
-                                                name="role">
+                                            <select class="form-select" aria-label="Default select example" name="role">
                                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>
                                                     Admin
                                                 </option>
                                                 <option value="pegawai" {{ $user->role == 'pegawai' ? 'selected' : '' }}>
                                                     Pegawai
                                                 </option>
-                                                <option value="peminjam"
-                                                    {{ $user->role == 'peminjam' ? 'selected' : '' }}>
+                                                <option value="peminjam" {{ $user->role == 'peminjam' ? 'selected' : '' }}>
                                                     Peminjam
                                                 </option>
                                             </select>
@@ -104,13 +99,16 @@
                                             <label for="pp" class="form-label">Gambar</label>
                                             <input type="file" class="form-control" name="gambar" id="gambar">
                                         </div>
-                                        <input type="hidden" name="password" value="{{ $user->password }}">
+                                        <div class="mb-3">
+                                            <label for="alamat" class="form-label">Alamat</label>
+                                            <textarea name="alamat" id="alamat" class="d-block w-100 form-control" readonly>{{ Str::title($user->alamat) }}</textarea>
+                                        </div>
 
                                     </div>
                                     <div>
                                         <div class="d-flex d-flex justify-content-start">
 
-                                            <a href="/profile" class="mx-2">
+                                            <a href="{{ route('data-pengguna.show', $user->id) }}" class="mx-2">
                                                 <button type="button"
                                                     class="btn btn-danger text-white w-100 my-2  ">Batal</button>
                                             </a>

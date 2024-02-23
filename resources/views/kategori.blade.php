@@ -29,35 +29,33 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($kategori as $kategori)
-                                        
-                                    
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $kategori->kategori }}</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button class="btn btn-primary dropdown-toggle" type="button"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Action
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="{{ route('kategori.edit',$kategori->id) }}"><i
-                                                                class="bi bi-pencil"></i>
-                                                            Edit</a>
-                                                    </li>
-                                                    <form action="{{ route('kategori.destroy', $kategori->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <li><button type="submit" class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash"></i>
-                                                                Delete</button></li>
-                                                    </form>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ Str::title($kategori->kategori) }}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Action
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('kategori.edit', $kategori->id) }}"><i
+                                                                    class="bi bi-pencil"></i>
+                                                                Edit</a>
+                                                        </li>
+                                                        <form action="{{ route('kategori.destroy', $kategori->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <li><button type="submit" class="dropdown-item"
+                                                                    href="#"><i class="bi bi-trash"></i>
+                                                                    Delete</button></li>
+                                                        </form>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

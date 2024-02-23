@@ -4,7 +4,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h1>Selamat Datang,{{ Auth::user()->role }}!</h1>
+                    <h1>Selamat Datang,{{ Str::title(Auth::user()->username) }}!</h1>
                 </div>
             </div>
 
@@ -45,10 +45,10 @@
                                                 src="{{ asset('storage/posts/' . $buku->cover) }}" alt=""
                                                 class="w-100">
                                         </td>
-                                        <td class="text-center">{{ $buku->judul }}</td>
-                                        <td class="text-center">{{ $buku->kategori->kategori }}</td>
-                                        <td class="text-center">{{ $buku->penulis }}</td>
-                                        <td class="text-center">{{ $buku->stok }}</td>
+                                        <td class="text-center">{{ Str::title($buku->judul) }}</td>
+                                        <td class="text-center">{{ Str::title($buku->kategori->kategori) }}</td>
+                                        <td class="text-center">{{ Str::title($buku->penulis) }}</td>
+                                        <td class="text-center">{{ Str::title($buku->stok) }}</td>
                                         <td>
                                             <div class="dropdown text-center">
                                                 <button class="btn btn-primary dropdown-toggle" type="button"

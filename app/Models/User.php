@@ -72,4 +72,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ulasan::class, 'id_user', 'id');
     }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function koleksi(): HasMany
+    {
+        return $this->hasMany(Koleksi::class, 'id_user', 'id');
+    }
 }

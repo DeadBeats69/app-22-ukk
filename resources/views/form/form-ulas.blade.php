@@ -10,19 +10,26 @@
             <section class="section">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('ulas.store') }}" method="POST">
+                            @csrf
+                            <input type="text" hidden name="id_user" value="{{ Auth::user()->id }}" id="">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="" readonly>
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="" readonly
+                                    value="{{ Auth::user()->username }}" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control" id="judul-buku" placeholder="" readonly>
+                                <select class="form-select" name="id_buku" aria-label="Default select example">
+                                    @foreach ($buku as $buku)
+                                        <option value="{{ $buku->id }}">{{ $buku->judul }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="jk" class="form-label">Beri Rating</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1" selected>1</option>
+                                <select class="form-select" aria-label="Default select example" name="rating">
+                                    <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -30,8 +37,9 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="alamat" class="form-label">Komentar</label>
-                                <input type="textarea" class="form-control" id="komentar" placeholder="" maxlength="255">
+                                <label for="ulasan" class="form-label">Komentar</label>
+                                <textarea name="ulasan" id="ulasan" cols="30" rows="10" maxlength="255" class="w-100 form-control"
+                                    name="komentar"></textarea>
                             </div>
                             <a href="/detail-buku">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>

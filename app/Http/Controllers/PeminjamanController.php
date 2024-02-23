@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
-use App\Models\Peminjaman;
-use App\Models\User;
 use Carbon\Carbon;
+use App\Models\Buku;
+use App\Models\User;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class PeminjamanController extends Controller
@@ -122,4 +123,6 @@ class PeminjamanController extends Controller
         //redirect to index
         return redirect('peminjaman');
     }
+
+    
 }

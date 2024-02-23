@@ -12,6 +12,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\WelcomeController;
+// use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,6 @@ Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class)
 
 // // ulasan
 Route::resource('/ulas', App\Http\Controllers\UlasController::class);
+
+// pdf
+// Route::get('/peminjamanPDF', [PDFController::class, 'peminjamanPDF']);

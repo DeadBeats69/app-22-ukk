@@ -51,7 +51,7 @@
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Action
                                                 </button>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu d-flex justify-content-center">
 
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i

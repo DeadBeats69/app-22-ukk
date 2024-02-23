@@ -18,6 +18,7 @@ class DashboardController extends Controller
         return view('dashboard.dashboard-pegawai', [
             'title' => 'Buku',
             'active' => 'buku',
+            'buku' => $buku
         ]);
     }
 
@@ -26,6 +27,7 @@ class DashboardController extends Controller
         return view('dashboard.dashboard-peminjam', [
             'title' => 'Buku',
             'active' => 'buku',
+            'buku' => $buku
         ]);
     }
 }

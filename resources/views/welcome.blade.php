@@ -64,8 +64,9 @@
                                 bertujuan untuk mempermudah dalam pencarian buku atau proses peminjaman buku perpustakaan.
                             </p>
                             <p>
-                                LeVivli ini menunjang pada proses peminjaman buku,penambahan buku,memberikan ulasan pada
-                                buku dan lainnya.
+                                LeVivli ini menunjang pada proses peminjaman buku,penambahan buku, dan memberikan ulasan
+                                pada
+                                buku.
                             </p>
                         </div>
                         <div class="col ">

@@ -110,10 +110,10 @@
                             @foreach ($ulas as $ulas)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $ulas->buku->judul }}</td>
+                                    <td>{{ Str::title($ulas->buku->judul) }}</td>
                                     <td>{{ $ulas->ulasan }}</td>
                                     <td>{{ $ulas->rating }}</td>
-                                    <td>{{ Str::title($ulas->user->nama) }}</td>
+                                    <td>{{ Str::title($ulas->user->username) }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle" type="button"

@@ -41,7 +41,7 @@
                                 <textarea name="ulasan" id="ulasan" cols="30" rows="10" maxlength="255" class="w-100 form-control"
                                     name="komentar"></textarea>
                             </div>
-                            <a href="/detail-buku">
+                            <a href={{ route('dashboard.show', $buku->id) }}>
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>
                             </a>
                             <a href="">

@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach ($buku as $buku)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
                                         <td style="width: 150px; height: 200px"><img
                                                 src="{{ asset('storage/posts/' . $buku->cover) }}" alt=""
                                                 class="w-100">

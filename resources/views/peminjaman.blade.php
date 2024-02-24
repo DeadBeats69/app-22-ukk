@@ -39,7 +39,7 @@
                             <tbody>
                                 @foreach ($peminjaman as $peminjaman)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">{{ Str::title($peminjaman->buku->judul) }}</td>
                                         <td class="text-center">{{ $peminjaman->tgl_pinjam }}</td>
                                         <td class="text-center">{{ $peminjaman->tgl_kembali }}</td>
@@ -51,8 +51,7 @@
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Action
                                                 </button>
-                                                <ul class="dropdown-menu d-flex justify-content-center">
-
+                                                <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
                                                                 class="bi bi-pencil"></i>

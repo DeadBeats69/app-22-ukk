@@ -30,7 +30,7 @@
                                 <tbody>
                                     @foreach ($kategori as $kategori)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>{{ Str::title($kategori->kategori) }}</td>
                                             <td>
                                                 <div class="dropdown">

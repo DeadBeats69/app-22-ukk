@@ -4,7 +4,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Koleksi Buku</h3>
+                    <h3>Koleksi Buku Kamu</h3>
                 </div>
             </div>
             <section class="section min-vh-100">
@@ -24,13 +24,13 @@
                             <tbody>
                                 @foreach ($koleksi as $koleksi)
                                     <tr>
-                                        <td>1</td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
                                         <td style="width: 150px; height: 200px"><img
                                                 src="{{ asset('storage/posts/' . $koleksi->buku->cover) }}" alt=""
                                                 class="w-100">
                                         </td>
                                         <td class="text-center">{{ Str::title($koleksi->buku->judul) }}</td>
-                                        <td class="text-center">{{ Str::title($koleksi->user->nama) }}</td>
+                                        <td class="text-center">{{ Str::title($koleksi->buku->penulis) }}</td>
                                         <td>
                                             <div class="dropdown text-center">
                                                 <button class="btn btn-primary dropdown-toggle" type="button"

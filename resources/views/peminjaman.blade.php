@@ -16,7 +16,7 @@
                                     Tambah
                                     Data</button>
                             </a>
-                            <a href="/peminjaman" class="mx-2">
+                            <a href="/cetak-peminjaman" class="mx-2">
                                 <button type="button" class="btn btn-success d-flex"><i
                                         class="bi bi-file-earmark-excel mx-2"></i>
                                     Cetak Peminjaman</button>

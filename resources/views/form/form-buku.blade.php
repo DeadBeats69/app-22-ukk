@@ -20,7 +20,8 @@
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-select" aria-label="Default select example" name="id_kategori">
                                     @foreach ($kategori as $kategori)
-                                        <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                                        <option value="{{ Str::title($kategori->id) }}">
+                                            {{ Str::title($kategori->kategori) }}</option>
                                     @endforeach
                                 </select>
                             </div>

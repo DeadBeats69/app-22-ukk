@@ -68,3 +68,6 @@ Route::resource('/ulas', App\Http\Controllers\UlasController::class);
 
 // pdf
 // Route::get('/peminjamanPDF', [PDFController::class, 'peminjamanPDF']);
+
+// excel
+    Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export'])->name('cetakpeminjaman');

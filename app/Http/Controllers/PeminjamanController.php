@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExcelExport;
 use Carbon\Carbon;
 use App\Models\Buku;
 use App\Models\User;
 use Barryvdh\DomPDF\PDF;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeminjamanController extends Controller
 {
@@ -123,6 +125,12 @@ class PeminjamanController extends Controller
         //redirect to index
         return redirect('peminjaman');
     }
+
+    public function export() 
+    {
+        return Excel::download(new ExcelExport, 'Peminjaman.xlsx');
+    }
+
 
     
 }

@@ -11,11 +11,13 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
-                            <a href="{{ route('peminjaman.create') }}" class="mx-2">
-                                <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle mx-2"></i>
-                                    Tambah
-                                    Data</button>
-                            </a>
+                            @can('admin-pegawai')
+                                <a href="{{ route('peminjaman.create') }}" class="mx-2">
+                                    <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle mx-2"></i>
+                                        Tambah
+                                        Data</button>
+                                </a>
+                            @endcan
                             <a href="/cetak-peminjaman" class="mx-2">
                                 <button type="button" class="btn btn-success d-flex"><i
                                         class="bi bi-file-earmark-excel mx-2"></i>

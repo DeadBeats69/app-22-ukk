@@ -9,18 +9,18 @@
             <div class="row mt-5">
                 <div class="col-md-4 col-sm-12">
                     <ul>
-                        <div class="row col-md-4 col-sm-12">
+                        <div class="row col-md-4 col-sm-12  position-absolute" style="left: 35px;">
                             <form action="{{ route('koleksi.store') }}" enctype="multipart/form-data" method="post">
                                 @csrf
                                 <input type="hidden" name="id_buku" id="id_buku" value="{{ $buku->id }}">
                                 <input type="hidden" name="id_user" id="id_user" value="{{ Auth::user()->id }}">
-                                <button type="submit" class="btn btn-success ms-3 my-1"><i class="bi bi-plus-circle"></i>
-                                    Tambah Koleksi</button>
+                                <button type="submit" class="btn btn-success ms-3 my-1"><i class="bi bi-bookmark"></i>
+                                </button>
                             </form>
                         </div>
 
                         <img src="{{ asset('storage/posts/' . $buku->cover) }}" alt="" class="ms-3"
-                            style="width:200px; height:200px">
+                            style="width:250px; height:300px">
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-12">

@@ -151,9 +151,13 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+    {   
         $this->authorize('admin');
+        
         $user = User::where('id', $id)->first();
+        if($user->role == 'admin'){
+            return back();
+        }
         if($user->gambar != null){
             $path = public_path('storage/posts/') .  $user->gambar;
             if(file_exists($path)){

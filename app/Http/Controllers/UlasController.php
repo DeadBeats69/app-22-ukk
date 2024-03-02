@@ -55,7 +55,7 @@ class UlasController extends Controller
         if($validateData){
             Ulasan::create($validateData);
             
-            return redirect('dashboard');
+            return redirect('dashboard-admin');
         }
         return redirect()->back();
     }
@@ -115,6 +115,6 @@ class UlasController extends Controller
         $ulas->delete();
 
         // redirect
-        return redirect('dashboard');
+        return redirect('dashboard-admin');
     }
 }

@@ -58,6 +58,7 @@ class PeminjamanController extends Controller
             'status_pinjam' => 'required',
             'id_user' => 'required',
             'id_buku' => 'required',
+            'jml_pinjam' => 'required',
             ]);
 
             if($validateData){
@@ -110,6 +111,7 @@ class PeminjamanController extends Controller
             'tgl_kembali' => 'nullable',
             'status_pinjam' => 'nullable',
             'id_user' => 'nullable',
+            'jml_pinjam' => 'nullable',
             ]);
             $peminjaman = Peminjaman::where('id', $id)->update($validateData);
             return $this->index();

@@ -124,20 +124,22 @@
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 Action
                                             </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item"
-                                                        href="{{ route('ulas.edit', $ulas->id) }}"><i
-                                                            class="bi bi-pencil"></i>
-                                                        Edit</a>
-                                                </li>
-                                                <form action="{{ route('ulas.destroy', $ulas->id) }}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <li><button type="submit" class="dropdown-item btn"
-                                                            href='ulas.destroy'><i class="bi bi-trash"></i>
-                                                            Delete</button></li>
-                                                </form>
-                                            </ul>
+                                            @if ($ulas->id_user == Auth::user()->id)
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('ulas.edit', $ulas->id) }}"><i
+                                                                class="bi bi-pencil"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                    <form action="{{ route('ulas.destroy', $ulas->id) }}" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <li><button type="submit" class="dropdown-item btn"
+                                                                href='ulas.destroy'><i class="bi bi-trash"></i>
+                                                                Delete</button></li>
+                                                    </form>
+                                                </ul>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

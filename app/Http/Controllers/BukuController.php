@@ -12,11 +12,26 @@ class BukuController extends Controller
     public function index() {
         $buku = Buku::latest()->paginate(5);
         $kategori = Kategori::get();
-        return view('dashboard.dashboard', compact('buku'), [
-            'title' => 'Buku',
-            'active' => 'buku',
-            'kategori' => $kategori
-        ]);
+
+        if(auth()->user()->role == 'admin'){
+            return view('dashboard.dashboard-admin', compact('buku'), [
+                'title' => 'Buku',
+                'active' => 'buku',
+                'kategori' => $kategori
+            ]);
+        } else if(auth()->user()->role == 'pegawai'){
+            return view('dashboard.dashboard-pegawai', compact('buku'), [
+                'title' => 'Buku',
+                'active' => 'buku',
+                'kategori' => $kategori
+            ]);
+        } else if(auth()->user()->role == 'peminjam'){
+            return view('dashboard.dashboard-peminjam', compact('buku'), [
+                'title' => 'Buku',
+                'active' => 'buku',
+                'kategori' => $kategori
+            ]);
+        }
     }
 
     public function create(){
@@ -55,7 +70,7 @@ class BukuController extends Controller
         if($validateData){
             Buku ::create($validateData);
 
-            return redirect('dashboard');
+            return redirect('dashboard-admin')->with('success', 'Data buku ditambahkan');
         } 
 
         return redirect()->back();

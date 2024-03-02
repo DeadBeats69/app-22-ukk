@@ -85,11 +85,12 @@
                                     </div>
                                     <div>
                                         <div class="d-flex d-flex justify-content-start">
-
-                                            <a href="{{ route('data-pengguna.edit', $user->id) }}" class="mx-2">
-                                                <button type="button"
-                                                    class="btn btn-warning text-white w-100 my-2  ">Edit</button>
-                                            </a>
+                                            @can('admin-pegawai')
+                                                <a href="{{ route('data-pengguna.edit', $user->id) }}" class="mx-2">
+                                                    <button type="button"
+                                                        class="btn btn-warning text-white w-100 my-2  ">Edit</button>
+                                                </a>
+                                            @endcan
 
                                         </div>
                                     </div>

@@ -19,7 +19,7 @@ class KoleksiController extends Controller
         $user = User::get();
         $buku = Buku::get();
         return view('koleksi',compact('koleksi'), [
-            'title' => 'Register',
+            'title' => 'Koleksi',
             'active' => 'koleksi',
             'user' => $user
         ]);
@@ -38,7 +38,14 @@ class KoleksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'id_user' => 'required',
+            'id_buku' => 'required',
+        ]);
+
+        $koleksi = Koleksi::create($validateData);
+
+        return redirect('/koleksi');
     }
 
     /**

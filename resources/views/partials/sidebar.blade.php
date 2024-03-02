@@ -25,7 +25,7 @@
                 </li>
 
                 <li class="sidebar-item {{ $active == 'buku' ? 'active' : '' }}">
-                    <a href="/dashboard" class='sidebar-link'>
+                    <a href="/dashboard-{{ auth()->user()->role }}" class='sidebar-link'>
                         <i class="bi bi-journals"></i>
                         <span>Buku</span>
                     </a>
@@ -53,15 +53,16 @@
                     </a>
                 </li>
 
+                @can('admin-pegawai')
+                    <li class="sidebar-title">Forms &amp; Tables</li>
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
-
-                <li class="sidebar-item  {{ $active == 'data-pengguna' ? 'active' : '' }}">
-                    <a href="/data-pengguna" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
-                        <span>Data Pengguna</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item  {{ $active == 'data-pengguna' ? 'active' : '' }}">
+                        <a href="/data-pengguna" class='sidebar-link'>
+                            <i class="bi bi-person-fill"></i>
+                            <span>Data Pengguna</span>
+                        </a>
+                    </li>
+                @endcan
 
             </ul>
         </div>

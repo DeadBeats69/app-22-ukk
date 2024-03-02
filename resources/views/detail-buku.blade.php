@@ -10,10 +10,13 @@
                 <div class="col-md-4 col-sm-12">
                     <ul>
                         <div class="row col-md-4 col-sm-12">
-                            <a href="/dashboard">
-                                <button type="button" class="btn btn-success ms-3 my-1"><i class="bi bi-plus-circle"></i>
+                            <form action="{{ route('koleksi.store') }}" enctype="multipart/form-data" method="post">
+                                @csrf
+                                <input type="hidden" name="id_buku" id="id_buku" value="{{ $buku->id }}">
+                                <input type="hidden" name="id_user" id="id_user" value="{{ Auth::user()->id }}">
+                                <button type="submit" class="btn btn-success ms-3 my-1"><i class="bi bi-plus-circle"></i>
                                     Tambah Koleksi</button>
-                            </a>
+                            </form>
                         </div>
 
                         <img src="{{ asset('storage/posts/' . $buku->cover) }}" alt="" class="ms-3"
@@ -75,10 +78,11 @@
                 </div>
             </div>
             <div class="d-flex d-flex justify-content-center mx-3">
-
-                <a href="{{ route('dashboard.edit', $buku->id) }}" class="mx-2">
-                    <button type="button" class="btn btn-warning text-white w-100 my-2  ">Edit</button>
-                </a>
+                @can('admin-pegawai')
+                    <a href="{{ route('dashboard-admin.edit', $buku->id) }}" class="mx-2">
+                        <button type="button" class="btn btn-warning text-white w-100 my-2  ">Edit</button>
+                    </a>
+                @endcan
             </div>
         </section>
 

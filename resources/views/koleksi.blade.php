@@ -39,7 +39,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('dashboard.show', $koleksi->buku->id) }}"><i
+                                                            href="{{ route('dashboard-admin.show', $koleksi->buku->id) }}"><i
                                                                 class="bi bi-eye"></i>
                                                             Detail</a></li>
                                                     <form action="{{ route('koleksi.destroy', $koleksi->id) }}"

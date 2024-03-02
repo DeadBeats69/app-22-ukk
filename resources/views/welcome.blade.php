@@ -35,7 +35,7 @@
                             buku dimanapun dan kapanpun
                         </p>
                         @if (Auth::check())
-                            <a href="/dashboard" class="btn btn-1 px-4 text-light" type="button"
+                            <a href="/dashboard-{{ auth()->user()->role }}" class="btn btn-1 px-4 text-light" type="button"
                                 style="background-color: #11235A"> <span>Dashboard</span> <i
                                     class="bi bi-box-arrow-in-right icon-btn-1 ms-2"></i></a>
                         @else

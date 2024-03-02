@@ -33,7 +33,9 @@
                                     <th>Tgl Kembali</th>
                                     <th>Status</th>
                                     <th>Peminjam</th>
-                                    <th>Action</th>
+                                    @can('admin-pegawai')
+                                        <th>Action</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,29 +47,31 @@
                                         <td class="text-center">{{ $peminjaman->tgl_kembali }}</td>
                                         <td class="text-center">{{ Str::title($peminjaman->status_pinjam) }}</td>
                                         <td class="text-center">{{ Str::title($peminjaman->user->nama) }}</td>
-                                        <td>
-                                            <div class="dropdown text-center">
-                                                <button class="btn btn-primary dropdown-toggle" type="button"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Action
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
-                                                                class="bi bi-pencil"></i>
-                                                            Edit</a>
-                                                    </li>
-                                                    <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <li><button type="submit" class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash"></i>
-                                                                Delete</button></li>
-                                                    </form>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                        @can('admin-pegawai')
+                                            <td>
+                                                <div class="dropdown text-center">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Action
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
+                                                                    class="bi bi-pencil"></i>
+                                                                Edit</a>
+                                                        </li>
+                                                        <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <li><button type="submit" class="dropdown-item" href="#"><i
+                                                                        class="bi bi-trash"></i>
+                                                                    Delete</button></li>
+                                                        </form>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
                             </tbody>

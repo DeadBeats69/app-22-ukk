@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
-                            <a href="{{ route('dashboard.create') }}">
+                            <a href="{{ route('dashboard-admin.create') }}">
                                 <button type="button" class="btn btn-success d-flex"><i class="bi bi-plus-circle me-1"></i>
                                     Tambah
                                     Buku</button>
@@ -57,15 +57,15 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('dashboard.show', $buku->id) }}"><i
+                                                            href="{{ route('dashboard-admin.show', $buku->id) }}"><i
                                                                 class="bi bi-eye"></i>
                                                             Detail</a></li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('dashboard.edit', $buku->id) }}"><i
+                                                            href="{{ route('dashboard-admin.edit', $buku->id) }}"><i
                                                                 class="bi bi-pencil"></i>
                                                             Edit</a>
                                                     </li>
-                                                    <form action="{{ route('dashboard.destroy', $buku->id) }}"
+                                                    <form action="{{ route('dashboard-admin.destroy', $buku->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

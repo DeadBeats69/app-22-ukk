@@ -49,7 +49,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('dashboard.show', $buku->id) }}"><i
+                                                            href="{{ route('dashboard-admin.show', $buku->id) }}"><i
                                                                 class="bi bi-eye"></i>
                                                             Detail</a></li>
                                                 </ul>

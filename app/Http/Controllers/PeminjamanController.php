@@ -34,6 +34,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {   
+        $this->authorize('admin-pegawai');
         $buku = Buku::get();
         $user = User::get();
         
@@ -50,6 +51,7 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin-pegawai');
         $validateData = $request->validate([
             'tgl_pinjam' => 'required',
             'tgl_kembali' => 'required',
@@ -80,6 +82,7 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
+        $this->authorize('admin-pegawai');
         $peminjaman = Peminjaman::where('id', $id)->first();
         $bukuList = Buku::get();
         $user = User::get();
@@ -99,7 +102,8 @@ class PeminjamanController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+        $this->authorize('admin-pegawai');
         $validateData=$request->validate([
             'id_buku' => 'nullable',
             'tgl_pinjam' => 'nullable',
@@ -116,6 +120,7 @@ class PeminjamanController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('admin-pegawai');
         $peminjaman = Peminjaman::findOrFail($id);
 
 

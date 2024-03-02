@@ -27,6 +27,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin-pegawai');
         return view('form.form-kategori', [
             'title' => 'Form Kategori',
             'active' => 'kategori'
@@ -38,6 +39,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin-pegawai');
         $validateData = $request->validate([
             'kategori' => 'required',
             ]);
@@ -56,6 +58,7 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
+        
         $kategori = Kategori::where('id', $id)->first();
 
         return view('kategori', [
@@ -70,6 +73,7 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
+        $this->authorize('admin-pegawai');
        $kategori = Kategori::where('id', $id)->first();
        
        return view('edit.edit-kategori', [
@@ -85,6 +89,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('admin-pegawai');
         $validateData=$request->validate([
         'kategori' => 'required'
         ]);
@@ -98,6 +103,7 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('admin-pegawai');
         $kategori = Kategori::findOrFail($id);
 
 

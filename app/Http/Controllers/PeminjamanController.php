@@ -19,11 +19,13 @@ class PeminjamanController extends Controller
     public function index()
     {   
         $peminjaman = Peminjaman::get();
+        $peminjaman_user = Peminjaman::where('id_user', auth()->user()->id)->get();
         $user = User::get();
         return view('peminjaman', [
             'title' => 'Peminjaman',
             'active' => 'peminjaman',
             'peminjaman' => $peminjaman,
+            'peminjaman_user' => $peminjaman_user,
             'user' => $user
         ]);
         

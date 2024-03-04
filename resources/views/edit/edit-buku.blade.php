@@ -1,7 +1,7 @@
 @extends('layouts.pustaka')
 
 @section('content')
-    <form action="{{ route('dashboard.update', $buku->id) }}" method="POST" enctype="multipart/form-data" class="mx-2">
+    <form action="{{ route('dashboard-admin.update', $buku->id) }}" method="POST" enctype="multipart/form-data" class="mx-2">
         @method('PUT')
         @csrf
         <div class="page-heading">
@@ -28,7 +28,7 @@
                             <select class="form-select" name="id_kategori" aria-label="Default select example">
                                 @foreach ($kategori as $kategori)
                                     <option
-                                        value="{{ $kategori->id }}"{{ $kategori->id == $kategori->id ? 'selected' : '' }}>
+                                        value="{{ $kategori->id }}"{{ $kategori->id == $buku->id_kategori ? 'selected' : '' }}>
                                         {{ $kategori->kategori }}
                                     </option>
                                 @endforeach
@@ -77,7 +77,7 @@
                     <div>
                         <div class="d-flex d-flex justify-content-center mx-3">
 
-                            <a href="/dashboard" class="mx-2">
+                            <a href="{{ route('dashboard-admin.show', $buku->id) }}" class="mx-2">
                                 <button type="button" class="btn btn-danger text-white w-100 my-2  ">Batal</button>
                             </a>
                             <a href="" class="mx-2">

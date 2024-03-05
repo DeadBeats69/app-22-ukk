@@ -36,6 +36,7 @@
                                         <th>Tgl Pinjam</th>
                                         <th>Tgl Kembali</th>
                                         <th>Status</th>
+                                        <th>Jumlah Pinjam</th>
                                         <th>Peminjam</th>
                                         @can('admin-pegawai')
                                             <th>Action</th>
@@ -50,6 +51,7 @@
                                             <td class="text-center">{{ $peminjaman->tgl_pinjam }}</td>
                                             <td class="text-center">{{ $peminjaman->tgl_kembali }}</td>
                                             <td class="text-center">{{ Str::title($peminjaman->status_pinjam) }}</td>
+                                            <td class="text-center">{{ $peminjaman->jml_pinjam }}</td>
                                             <td class="text-center">{{ Str::title($peminjaman->user->nama) }}</td>
                                             @can('admin-pegawai')
                                                 <td>
@@ -115,6 +117,7 @@
                                         <th>Tgl Pinjam</th>
                                         <th>Tgl Kembali</th>
                                         <th>Status</th>
+                                        <th>Jumlah Pinjam</th>
                                         <th>Peminjam</th>
                                         @can('admin-pegawai')
                                             <th>Action</th>
@@ -129,6 +132,7 @@
                                             <td class="text-center">{{ $peminjaman_user->tgl_pinjam }}</td>
                                             <td class="text-center">{{ $peminjaman_user->tgl_kembali }}</td>
                                             <td class="text-center">{{ Str::title($peminjaman_user->status_pinjam) }}</td>
+                                            <td class="text-center">{{ $peminjaman_user->jml_pinjam }}</td>
                                             <td class="text-center">{{ Str::title($peminjaman_user->user->nama) }}</td>
                                             @can('admin-pegawai')
                                                 <td>

@@ -11,6 +11,7 @@ use App\Http\Controllers\DetailBukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UlasController;
 use App\Http\Controllers\WelcomeController;
 // use App\Http\Controllers\PDFController;
 
@@ -73,9 +74,10 @@ Route::resource('/koleksi', App\Http\Controllers\KoleksiController::class);
 
 // // ulasan
 Route::resource('/ulas', App\Http\Controllers\UlasController::class);
+Route::get('/ulas/create/{id}', [UlasController::class, 'create'])->name('ulas.create');
 
 // pdf
 // Route::get('/peminjamanPDF', [PDFController::class, 'peminjamanPDF']);
 
+Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export'])->name('cetakpeminjaman');
 // excel
-    Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export'])->name('cetakpeminjaman');

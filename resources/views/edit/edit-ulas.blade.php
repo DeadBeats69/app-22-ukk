@@ -43,7 +43,7 @@
                                 <label for="alamat" class="form-label">Komentar</label>
                                 <textarea name="ulasan" id="ulasan" cols="30" rows="10" maxlength="255" class="w-100 form-control">{{ $ulas->ulasan }}</textarea>
                             </div>
-                            <a href="{{ route('dashboard.show', $buku->id) }}">
+                            <a href="{{ route('dashboard-admin.show', $ulas->id_buku) }}">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>
                             </a>
                             <a href="">

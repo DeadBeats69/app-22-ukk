@@ -22,7 +22,8 @@
                                 <label for="nama" class="form-label">Judul Buku</label>
                                 <select class="form-select" name="id_buku" aria-label="Default select example">
                                     @foreach ($buku as $buku)
-                                        <option value="{{ $buku->id }}">{{ $buku->judul }}</option>
+                                        <option value="{{ $buku->id }}"{{ $buku->id == $id_buku ? 'selected' : '' }}>
+                                            {{ $buku->judul }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,7 +42,7 @@
                                 <textarea name="ulasan" id="ulasan" cols="30" rows="10" maxlength="255" class="w-100 form-control"
                                     name="komentar"></textarea>
                             </div>
-                            <a href={{ route('dashboard-admin.show', $buku->id) }}>
+                            <a href={{ route('dashboard-admin.show', $id_buku) }}>
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>
                             </a>
                             <a href="">

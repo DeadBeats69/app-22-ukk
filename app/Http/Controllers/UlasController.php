@@ -26,7 +26,7 @@ class UlasController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         $ulas = Ulasan::get();
         $buku = Buku::get();
@@ -37,6 +37,7 @@ class UlasController extends Controller
             'buku' => $buku,
             'ulas' => $ulas,
             'user' => $user,
+            'id_buku'=> $id
         ]);
     }
 
@@ -55,7 +56,7 @@ class UlasController extends Controller
         if($validateData){
             Ulasan::create($validateData);
             
-            return redirect('dashboard-admin');
+            return redirect()->route('dashboard-admin.show', $request->id_buku);
         }
         return redirect()->back();
     }

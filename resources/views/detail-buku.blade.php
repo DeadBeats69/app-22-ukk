@@ -91,7 +91,7 @@
                 <div class="card-header">
                     <ul class="d-flex justify-content-between">
                         <h3>Ulasan</h3>
-                        <a href="{{ route('ulas.create') }}">
+                        <a href="{{ route('ulas.create', $buku->id) }}">
                             <button type="button" class="btn btn-success"><i class="bi bi-plus-circle"></i>
                                 Berikan
                                 Ulasan</button>

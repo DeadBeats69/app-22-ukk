@@ -47,19 +47,21 @@
                                                             href="{{ route('data-pengguna.show', $user->id) }}"><i
                                                                 class="bi bi-eye"></i>
                                                             Detail</a></li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('data-pengguna.edit', $user->id) }}"><i
-                                                                class="bi bi-pencil"></i>
-                                                            Edit</a>
-                                                    </li>
-                                                    <form action="{{ route('data-pengguna.destroy', $user->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <li><button type="submit" class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash"></i>
-                                                                Delete</button></li>
-                                                    </form>
+                                                    @can('admin')
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('data-pengguna.edit', $user->id) }}"><i
+                                                                    class="bi bi-pencil"></i>
+                                                                Edit</a>
+                                                        </li>
+                                                        <form action="{{ route('data-pengguna.destroy', $user->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <li><button type="submit" class="dropdown-item" href="#"><i
+                                                                        class="bi bi-trash"></i>
+                                                                    Delete</button></li>
+                                                        </form>
+                                                    @endcan
                                                 </ul>
                                             </div>
                                         </td>

@@ -61,11 +61,13 @@
                                                             Action
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item"
-                                                                    href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
-                                                                        class="bi bi-pencil"></i>
-                                                                    Edit</a>
-                                                            </li>
+                                                            @if ($peminjaman->status_pinjam != 'dikembalikan')
+                                                                <li><a class="dropdown-item"
+                                                                        href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
+                                                                            class="bi bi-pencil"></i>
+                                                                        Edit</a>
+                                                                </li>
+                                                            @endif
                                                             <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
                                                                 method="POST">
                                                                 @csrf
@@ -101,11 +103,13 @@
                                             Data</button>
                                     </a>
                                 @endcan
-                                <a href="/cetak-peminjaman" class="mx-2">
-                                    <button type="button" class="btn btn-success d-flex"><i
-                                            class="bi bi-file-earmark-excel mx-2"></i>
-                                        Cetak Peminjaman</button>
-                                </a>
+                                @can('admin-pegawai')
+                                    <a href="/cetak-peminjaman" class="mx-2">
+                                        <button type="button" class="btn btn-success d-flex"><i
+                                                class="bi bi-file-earmark-excel mx-2"></i>
+                                            Cetak Peminjaman</button>
+                                    </a>
+                                @endcan
                             </ul>
                         </div>
                         <div class="card-body">
@@ -142,11 +146,13 @@
                                                             Action
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item"
-                                                                    href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
-                                                                        class="bi bi-pencil"></i>
-                                                                    Edit</a>
-                                                            </li>
+                                                            @if ($peminjaman->status_pinjam != 'dikembalikan')
+                                                                <li><a class="dropdown-item"
+                                                                        href="{{ route('peminjaman.edit', $peminjaman->id) }}"><i
+                                                                            class="bi bi-pencil"></i>
+                                                                        Edit</a>
+                                                                </li>
+                                                            @endif
                                                             <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
                                                                 method="POST">
                                                                 @csrf

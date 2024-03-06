@@ -57,13 +57,8 @@
 
                             <div class="mb-3">
                                 <label for="peminjam" class="form-label">Peminjam</label>
-                                <select class="form-select" name="id_user" aria-label="Default select example">
-                                    @foreach ($user as $user)
-                                        <option
-                                            value="{{ $user->id }}"{{ $user->id == $peminjaman->user->id ? 'selected' : '' }}>
-                                            {{ $user->nama }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" id="jml_pinjam" placeholder="" name="jml_pinjam"
+                                    value="{{ $peminjaman->user->nama }}" readonly>
                             </div>
 
                             <a href="/peminjaman">

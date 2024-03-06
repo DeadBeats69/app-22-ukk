@@ -31,7 +31,7 @@ Route::get('/', [WelcomeController::class,  'welcome']);
 
 Route::middleware(['guest'])->group(function(){
     //Login 
-    Route::get('/login', [LoginController::class,  'login']);
+    Route::get('/login', [LoginController::class,  'login'])->name('login');
     Route::post('/login', [LoginController::class, 'loginAction']);
     Route::post('/dashboard', [LoginController::class, 'loginAction']);
     
@@ -42,42 +42,45 @@ Route::middleware(['guest'])->group(function(){
 
 
 // logout
-Route::get('/logout',[LoginController::class,'logout']);
 
 
-//Buat nampilin dashboard
-// Route::middleware(['guest'])->group(function(){
-    Route::resource('/dashboard-admin', App\Http\Controllers\BukuController::class);
-// });
-
-// Route::middleware(['pegawai'])->group(function(){
-    Route::resource('/dashboard-pegawai', App\Http\Controllers\BukuController::class);
-// });
-
-Route::get('/dashboard-peminjam',[DashboardController::class,'dashboardpeminjam']); 
-
-
-
-//Buat pengguna
-    Route::resource('/data-pengguna', App\Http\Controllers\UserController::class);
-
-// //buat nampilin kategori
-
-Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
-
-//buat nampilin koleksi
-Route::resource('/koleksi', App\Http\Controllers\KoleksiController::class);
-// Route::get('/koleksi',[LoginController::class,'logout']);
-
-//peminjaman
-    Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);
-
-// // ulasan
-Route::resource('/ulas', App\Http\Controllers\UlasController::class);
-Route::get('/ulas/create/{id}', [UlasController::class, 'create'])->name('ulas.create');
-
-// pdf
-// Route::get('/peminjamanPDF', [PDFController::class, 'peminjamanPDF']);
-
-Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export'])->name('cetakpeminjaman');
-// excel
+Route::middleware(['auth'])->group(function(){
+    Route::get('/logout',[LoginController::class,'logout']);
+    
+    //Buat nampilin dashboard
+    // Route::middleware(['guest'])->group(function(){
+        Route::resource('/dashboard-admin', App\Http\Controllers\BukuController::class);
+    // });
+    
+    // Route::middleware(['pegawai'])->group(function(){
+        Route::resource('/dashboard-pegawai', App\Http\Controllers\BukuController::class);
+    // });
+    
+    Route::get('/dashboard-peminjam',[DashboardController::class,'dashboardpeminjam']); 
+    
+    
+    
+    //Buat pengguna
+        Route::resource('/data-pengguna', App\Http\Controllers\UserController::class);
+    
+    // //buat nampilin kategori
+    
+    Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
+    
+    //buat nampilin koleksi
+    Route::resource('/koleksi', App\Http\Controllers\KoleksiController::class);
+    // Route::get('/koleksi',[LoginController::class,'logout']);
+    
+    //peminjaman
+        Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class);
+    
+    // // ulasan
+    Route::resource('/ulas', App\Http\Controllers\UlasController::class);
+    Route::get('/ulas/create/{id}', [UlasController::class, 'create'])->name('ulas.create');
+    
+    // pdf
+    // Route::get('/peminjamanPDF', [PDFController::class, 'peminjamanPDF']);
+    
+    Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export'])->name('cetakpeminjaman');
+    // excel
+});

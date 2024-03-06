@@ -18,8 +18,8 @@ class PeminjamanController extends Controller
      */
     public function index()
     {   
-        $peminjaman = Peminjaman::get();
-        $peminjaman_user = Peminjaman::where('id_user', auth()->user()->id)->get();
+        $peminjaman = Peminjaman::get()->sortBy('created_at', SORT_REGULAR, true);
+        $peminjaman_user = Peminjaman::where('id_user', auth()->user()->id)->get()->sortBy('created_at', SORT_REGULAR, true);
         $user = User::get();
         return view('peminjaman', [
             'title' => 'Peminjaman',
@@ -38,7 +38,7 @@ class PeminjamanController extends Controller
     {   
         $this->authorize('admin-pegawai');
         $buku = Buku::get();
-        $user = User::get();
+        $user = User::where('role', 'peminjam')->get();
         
         return view('form.form-peminjaman', [
             'title' => 'Form Peminjaman',
@@ -88,7 +88,7 @@ class PeminjamanController extends Controller
         $this->authorize('admin-pegawai');
         $peminjaman = Peminjaman::where('id', $id)->first();
         $bukuList = Buku::get();
-        $user = User::get();
+        $user = User::where('role', 'peminjam')->get();
 
        
         return view('edit.edit-peminjaman', [

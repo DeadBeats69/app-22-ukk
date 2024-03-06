@@ -17,8 +17,8 @@ return new class extends Migration
             AFTER INSERT
             ON peminjaman FOR EACH ROW
             BEGIN
-                UPDATE buku SET stok = buku.stok - NEW.jml_pinjam
-                WHERE buku.id = NEW.id;
+                UPDATE buku SET stok = stok - NEW.jml_pinjam
+                WHERE id = NEW.id_buku;
             END;
         ');
 
@@ -27,10 +27,22 @@ return new class extends Migration
             AFTER UPDATE
             ON peminjaman FOR EACH ROW
             BEGIN
-                UPDATE buku SET stok = buku.stok + OLD.jml_pinjam
-                WHERE buku.id = OLD.id;
-                UPDATE buku SET stok = buku.stok - NEW.jml_pinjam
-                WHERE buku.id = NEW.id;
+                UPDATE buku SET stok = stok + OLD.jml_pinjam
+                WHERE id = OLD.id_buku;
+                UPDATE buku SET stok = stok - NEW.jml_pinjam
+                WHERE id = NEW.id_buku;
+            END;
+        ');
+
+        DB::unprepared('
+            CREATE TRIGGER TR_peminjaman_dikembalikan_AU
+            AFTER UPDATE
+            ON peminjaman FOR EACH ROW
+            BEGIN
+                IF(NEW.status_pinjam = "dikembalikan") THEN
+                UPDATE buku SET stok = stok + OLD.jml_pinjam
+                WHERE id = OLD.id_buku;
+               END IF;
             END;
         ');
 
@@ -40,7 +52,7 @@ return new class extends Migration
             ON peminjaman FOR EACH ROW
             BEGIN
                 UPDATE buku SET stok = stok + OLD.jml_pinjam
-                WHERE id = OLD.id;
+                WHERE id = OLD.id_buku;
             END;
     ');
     }

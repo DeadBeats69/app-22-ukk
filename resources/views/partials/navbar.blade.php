@@ -30,7 +30,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                         style="min-width: 11rem;">
                         <li>
-                            <h6 class="dropdown-header">Hello, {{ Auth::user()->nama }}!</h6>
+                            <h6 class="dropdown-header">Hello, {{ Auth::user()->username }}!</h6>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('data-pengguna.show', Auth::user()->id) }}"><i
                                     class="icon-mid bi bi-person me-2"></i> My

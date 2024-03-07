@@ -102,7 +102,7 @@ class UlasController extends Controller
             'rating' => 'nullable',
         ]);
         $ulas = Ulasan::where('id',$id)->update($validateData);
-        return $this->index();
+        return redirect()->route('dashboard-admin.show', $request->id_buku);
     }
 
     /**
@@ -116,6 +116,6 @@ class UlasController extends Controller
         $ulas->delete();
 
         // redirect
-        return redirect('dashboard-admin');
+        return back();
     }
 }

@@ -99,54 +99,34 @@
                     </ul>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-bordered my-2" id="table1">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Buku</th>
-                                <th>Ulasan</th>
-                                <th>Rating</th>
-                                <th>Pemberi Ulasan</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($ulas as $ulas)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ Str::title($ulas->buku->judul) }}</td>
-                                    <td>{{ $ulas->ulasan }}</td>
-                                    <td>{{ $ulas->rating }}</td>
-                                    <td>{{ Str::title($ulas->user->username) }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            @if ($ulas->id_user == Auth::user()->id)
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('ulas.edit', $ulas->id) }}"><i
-                                                                class="bi bi-pencil"></i>
-                                                            Edit</a>
-                                                    </li>
-                                                    <form action="{{ route('ulas.destroy', $ulas->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <li><button type="submit" class="dropdown-item btn"
-                                                                href='ulas.destroy'><i class="bi bi-trash"></i>
-                                                                Delete</button></li>
-                                                    </form>
-                                                </ul>
-                                            @endif
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                    @foreach ($ulas as $ulas)
+                        <div class="card shadow" style="background-color: #ffffff">
+                            <div class="card-body">
+                                <span class="fs-5 fw-bold">{{ Str::title($ulas->user->username) }}</span>
+                                <div class="d-flex justify-content-end">
+                                    @if ($ulas->id_user == Auth::user()->id)
+                                        <a type="submit" class="btn" href='{{ route('ulas.edit', $ulas->id) }}'><i
+                                                class="bi bi-pencil"></i>
+                                            edit</a>
+                                        <form action="{{ route('ulas.destroy', $ulas->id) }}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn" href='ulas.destroy'><i
+                                                    class="bi bi-trash"></i>
+                                                Delete</button>
+                                        </form>
+                                    @endif
+                                </div>
+                                <br>
+                                <span class="mb-3">Rating : {{ $ulas->rating }} <i class="bi bi-star-fill"
+                                        style="color: yellow"></i></span>
+                                <p>
+                                    {{ $ulas->ulasan }}
+                                </p>
 
-                        </tbody>
-                    </table>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>

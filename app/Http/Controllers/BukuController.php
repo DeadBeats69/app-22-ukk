@@ -39,7 +39,7 @@ class BukuController extends Controller
         $kategori = Kategori::get();
 
         return view('form.form-buku', [
-            'title' => 'Buku',
+            'title' => 'Tambah Buku',
             'active' => 'buku',
             'kategori' => $kategori
         ]);

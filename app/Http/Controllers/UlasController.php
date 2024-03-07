@@ -32,7 +32,7 @@ class UlasController extends Controller
         $buku = Buku::get();
         $user = User::get();
         return view('form.form-ulas', [
-            'title' => 'Buku',
+            'title' => 'Buat Ulasan',
             'active' => 'buku',
             'buku' => $buku,
             'ulas' => $ulas,

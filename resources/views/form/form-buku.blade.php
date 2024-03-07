@@ -51,7 +51,7 @@
                                 <label for="image" class="form-label">Gambar/Cover</label>
                                 <input type="file" class="form-control" name="cover" id="cover">
                             </div>
-                            <a href="/dashboard">
+                            <a href="/dashboard-admin">
                                 <button type="button" class="btn btn-danger my-2 ">Batal </button>
                             </a>
                             <a href="">

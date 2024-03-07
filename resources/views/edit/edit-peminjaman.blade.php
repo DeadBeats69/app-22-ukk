@@ -57,8 +57,11 @@
 
                             <div class="mb-3">
                                 <label for="peminjam" class="form-label">Peminjam</label>
-                                <input type="text" class="form-control" id="jml_pinjam" placeholder="" name="jml_pinjam"
-                                    value="{{ $peminjaman->user->nama }}" readonly>
+                                <input type="text" class="form-control" id="jml_pinjam" placeholder=""
+                                    value="{{ $peminjaman->user->nama }}" min="1" max="3" readonly>
+                                <input type="text" class="form-control" id="jml_pinjam" placeholder="" name="id_user"
+                                    value="{{ $peminjaman->id_user }}" hidden>
+
                             </div>
 
                             <a href="/peminjaman">

@@ -42,7 +42,8 @@
 
                             <div class="mb-3">
                                 <label for="jml_pinjam" class="form-label">Jumlah Pinjam</label>
-                                <input type="number" class="form-control" id="jml_pinjam" placeholder="" name="jml_pinjam">
+                                <input type="number" class="form-control" id="jml_pinjam" placeholder="" min="1"
+                                    max="3" name="jml_pinjam">
                             </div>
 
 

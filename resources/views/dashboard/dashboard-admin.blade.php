@@ -14,6 +14,9 @@
                 </div>
             </div>
             <section class="section min-vh-100">
+                @foreach ($kategori as $kategori)
+                    <span class="badge text-bg-primary my-3">{{ Str::title($kategori->kategori) }}</span>
+                @endforeach
                 <div class="card">
                     <div class="card-header">
                         <ul class="d-flex justify-content-end">
@@ -24,6 +27,7 @@
                             </a>
                         </ul>
                     </div>
+
                     <div class="card-body">
                         <table class="table table-striped table-bordered my-2" id="table1">
                             <thead>

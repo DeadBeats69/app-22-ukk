@@ -115,6 +115,7 @@ class PeminjamanController extends Controller
             'id_user' => 'nullable',
             'jml_pinjam' => 'nullable',
             ]);
+        
             $peminjaman = Peminjaman::where('id', $id)->update($validateData);
             return $this->index();
     }

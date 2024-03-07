@@ -32,9 +32,10 @@ class ExcelExport implements FromCollection, WithHeadings,WithMapping
     }
 
     public function map($peminjaman):array{
-        $no = 1;
+        static $no = 0;
+        $no++;
         return[
-            $no++,
+            $no,
             $peminjaman -> id,
             $peminjaman ->buku->judul,
             $peminjaman ->tgl_pinjam,
